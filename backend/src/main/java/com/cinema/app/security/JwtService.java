@@ -7,6 +7,12 @@ import org.springframework.stereotype.Service;
 import java.security.Key;
 import java.util.Date;
 
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.Claims;
+
+
 @Service
 public class JwtService {
 

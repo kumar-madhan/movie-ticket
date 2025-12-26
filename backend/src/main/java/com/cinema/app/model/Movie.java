@@ -6,6 +6,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
+@Data
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 @Table(name = "movies")
