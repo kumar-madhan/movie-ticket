@@ -26,6 +26,7 @@ com/cinema/app/model/Showtime.class
 com/cinema/app/security/JwtAuthFilter.class
 com/cinema/app/repository/UserRepository.class
 com/cinema/app/model/BookingSeat.class
+com/cinema/app/security/UserDetailsServiceImpl.class
 com/cinema/app/controller/BookingController.class
 com/cinema/app/repository/BookingSeatRepository.class
 com/cinema/app/model/Notification.class

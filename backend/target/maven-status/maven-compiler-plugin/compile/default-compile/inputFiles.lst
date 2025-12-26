@@ -39,6 +39,7 @@
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/security/JwtService.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/security/SecurityConfig.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/security/UserDetailsImpl.java
+/home/admin/movie-ticket/backend/src/main/java/com/cinema/app/security/UserDetailsServiceImpl.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/service/AuthService.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/service/BookingService.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/service/EmailService.java

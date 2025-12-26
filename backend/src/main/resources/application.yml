@@ -3,10 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://db:5432/movieticket
+    url: jdbc:postgresql://localhost:5432/movieticket
     username: postgres
     password: postgres
-
   jpa:
     hibernate:
       ddl-auto: update
@@ -14,16 +13,15 @@ spring:
     properties:
       hibernate:
         format_sql: true
-
   sql:
     init:
       mode: always
-
+      data-locations: classpath:data.sql
   mail:
     host: smtp.mailtrap.io
     port: 2525
-    username: user
-    password: pass
+    username: dummy
+    password: dummy
     properties:
       mail.smtp.auth: true
       mail.smtp.starttls.enable: true

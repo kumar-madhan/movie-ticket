@@ -1,2 +1,6 @@
+# Frontend files to ignore
 frontend/node_modules
+frontend/.next
+
+# Backend files to ignore
 backend/target

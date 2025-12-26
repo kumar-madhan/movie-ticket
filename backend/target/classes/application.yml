@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://db:5432/movieticket
+    url: jdbc:postgresql://localhost:5432/movieticket
     username: postgres
     password: postgres
   jpa:
@@ -16,16 +16,15 @@ spring:
   sql:
     init:
       mode: always
-
-jwt:
-  secret: c3VwZXItc2VjcmV0LWp3dC1rZXktZm9yLW1vdmllLWFwcA==
-
-spring:
+      data-locations: classpath:data.sql
   mail:
     host: smtp.mailtrap.io
     port: 2525
-    username: user
-    password: pass
+    username: dummy
+    password: dummy
     properties:
       mail.smtp.auth: true
       mail.smtp.starttls.enable: true
+
+jwt:
+  secret: c3VwZXItc2VjcmV0LWp3dC1rZXktZm9yLW1vdmllLWFwcA==
