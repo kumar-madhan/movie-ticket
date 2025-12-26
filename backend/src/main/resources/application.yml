@@ -6,6 +6,7 @@ spring:
     url: jdbc:postgresql://db:5432/movieticket
     username: postgres
     password: postgres
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -13,14 +14,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
   sql:
     init:
       mode: always
 
-jwt:
-  secret: super-secret-jwt-key-change-in-prod
-
-spring:
   mail:
     host: smtp.mailtrap.io
     port: 2525
@@ -29,3 +27,6 @@ spring:
     properties:
       mail.smtp.auth: true
       mail.smtp.starttls.enable: true
+
+jwt:
+  secret: c3VwZXItc2VjcmV0LWp3dC1rZXktZm9yLW1vdmllLWFwcA==

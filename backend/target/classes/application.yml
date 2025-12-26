@@ -18,7 +18,7 @@ spring:
       mode: always
 
 jwt:
-  secret: super-secret-jwt-key-change-in-prod
+  secret: c3VwZXItc2VjcmV0LWp3dC1rZXktZm9yLW1vdmllLWFwcA==
 
 spring:
   mail:

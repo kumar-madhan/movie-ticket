@@ -24,7 +24,7 @@
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/model/Theater.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/model/User.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/repository/BookingRepository.java
-/home/admin/movie-ticket/backend/src/main/java/com/cinema/app/repository/BookingSearRepository.java
+/home/admin/movie-ticket/backend/src/main/java/com/cinema/app/repository/BookingSeatRepository.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/repository/MovieRepository.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/repository/NotificationRepository.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/repository/PaymentRepository.java
