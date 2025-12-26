@@ -1,5 +1,5 @@
 package com.cinema.app.service;
-
+import com.cinema.app.model.Role;
 import com.cinema.app.dto.*;
 import com.cinema.app.model.User;
 import com.cinema.app.model.Role;
