@@ -1,9 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
-# create README.md for backend
-
-Here’s a complete **README.md** you can create directly in your backend directory using one command:
-
 ***
 
 ```bash
