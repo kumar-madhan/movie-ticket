@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
@@ -11,35 +12,54 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="flex justify-between items-center p-4 bg-gray-900 text-white">
-      <Link href="/" className="text-2xl font-bold text-orange-400">
-        🎬 Movie Ticket
-      </Link>
+    <header className="sticky top-0 z-50 bg-gradient-to-r from-gray-900 to-black shadow-lg">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+        {/* Logo */}
+        <Link
+          href="/"
+          className="text-2xl font-extrabold tracking-wide text-orange-400 hover:text-orange-300"
+        >
+          🎬 MovieTicket
+        </Link>
 
-      <div className="space-x-4">
-        <Link href="/movies">Movies</Link>
-        {isLoggedIn ? (
-          <>
-            <Link href="/profile">Profile</Link>
-            <button
-              onClick={() => {
-                Cookies.remove("jwt");
-                window.location.href = "/";
-              }}
-              className="bg-red-600 px-3 py-1 rounded hover:bg-red-700"
-            >
-              Logout
-            </button>
-          </>
-        ) : (
+        {/* Nav actions */}
+        <div className="flex items-center gap-4 text-sm font-medium">
           <Link
-            href="/login"
-            className="bg-orange-500 px-3 py-1 rounded hover:bg-orange-600"
+            href="/movies"
+            className="text-gray-300 hover:text-white transition"
           >
-            Login
+            Movies
           </Link>
-        )}
-      </div>
-    </nav>
+
+          {isLoggedIn ? (
+            <>
+              <Link
+                href="/profile"
+                className="text-gray-300 hover:text-white transition"
+              >
+                Profile
+              </Link>
+
+              <button
+                onClick={() => {
+                  Cookies.remove("jwt");
+                  window.location.href = "/login";
+                }}
+                className="rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 transition"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link
+              href="/login"
+              className="rounded-lg bg-orange-500 px-4 py-2 text-white hover:bg-orange-600 transition"
+            >
+              Login
+            </Link>
+          )}
+        </div>
+      </nav>
+    </header>
   );
 }

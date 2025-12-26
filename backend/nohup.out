@@ -1,2 +1,7338 @@
 nohup: ignoring input
 Error: Unable to access jarfile target/backend-1.0.0.jar
+Error: Unable to access jarfile backend-1.0.0.jar
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.2)
+
+2025-12-26T20:27:50.272Z  INFO 397468 --- [           main] com.cinema.app.MovieTicketApplication    : Starting MovieTicketApplication v1.0.0 using Java 17.0.17 with PID 397468 (/home/admin/movie-ticket/backend/target/backend-1.0.0.jar started by admin in /home/admin/movie-ticket/backend)
+2025-12-26T20:27:50.288Z  INFO 397468 --- [           main] com.cinema.app.MovieTicketApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-12-26T20:27:52.426Z  INFO 397468 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-26T20:27:52.628Z  INFO 397468 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 173 ms. Found 12 JPA repository interfaces.
+2025-12-26T20:27:53.750Z  INFO 397468 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 3001 (http)
+2025-12-26T20:27:53.773Z  INFO 397468 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-26T20:27:53.773Z  INFO 397468 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2025-12-26T20:27:53.839Z  INFO 397468 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-26T20:27:53.841Z  INFO 397468 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3280 ms
+2025-12-26T20:27:54.116Z  INFO 397468 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-26T20:27:54.324Z  INFO 397468 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2025-12-26T20:27:54.515Z  INFO 397468 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-26T20:27:55.415Z  INFO 397468 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-26T20:27:55.492Z  INFO 397468 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-26T20:27:55.964Z  INFO 397468 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@b94703b
+2025-12-26T20:27:55.967Z  INFO 397468 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-26T20:27:57.584Z  WARN 397468 --- [           main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): com.cinema.app.model.BookingSeatId
+2025-12-26T20:27:57.585Z  WARN 397468 --- [           main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): com.cinema.app.model.BookingSeatId
+2025-12-26T20:27:59.459Z  INFO 397468 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-26T20:27:59.895Z  INFO 397468 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-26T20:28:00.778Z  INFO 397468 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-12-26T20:28:00.931Z  WARN 397468 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-26T20:28:02.133Z  INFO 397468 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 3001 (http) with context path '/'
+2025-12-26T20:28:02.159Z  INFO 397468 --- [           main] com.cinema.app.MovieTicketApplication    : Started MovieTicketApplication in 12.964 seconds (process running for 14.041)
+2025-12-26T20:28:05.604Z  INFO 397468 --- [nio-3001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-26T20:28:05.605Z  INFO 397468 --- [nio-3001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-26T20:28:05.609Z  INFO 397468 --- [nio-3001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.description,
+        m1_0.duration,
+        m1_0.poster_url,
+        m1_0.rating,
+        m1_0.title 
+    from
+        movies m1_0
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?
+Hibernate: 
+    select
+        s1_0.movie_id,
+        s1_0.id,
+        s1_0.price_premium,
+        s1_0.price_regular,
+        s2_0.id,
+        s2_0.name,
+        s2_0.seat_layout,
+        t1_0.id,
+        t1_0.location,
+        t1_0.name,
+        t1_0.total_seats,
+        s1_0.start_time 
+    from
+        showtimes s1_0 
+    left join
+        screens s2_0 
+            on s2_0.id=s1_0.screen_id 
+    left join
+        theaters t1_0 
+            on t1_0.id=s2_0.theater_id 
+    where
+        s1_0.movie_id=?
+Hibernate: 
+    select
+        r1_0.movie_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rating,
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.password,
+        u1_0.role 
+    from
+        reviews r1_0 
+    left join
+        users u1_0 
+            on u1_0.id=r1_0.user_id 
+    where
+        r1_0.movie_id=?

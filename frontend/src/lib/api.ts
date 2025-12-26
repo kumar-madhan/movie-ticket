@@ -1,19 +1,33 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { refreshToken } from "./auth";
 
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3001/api",
 });
 
-api.interceptors.request.use(async (config) => {
-  let token = Cookies.get("access_token");
-
-  // Try refresh if no token
-  if (!token) token = await refreshToken();
-
-  if (token) config.headers.Authorization = `Bearer ${token}`;
+api.interceptors.request.use((config) => {
+  const token = Cookies.get("jwt");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
   return config;
 });
+
+export const getMovies = async () => {
+  const res = await api.get("/movies");
+
+  return res.data.map((m: any) => ({
+    ...m,
+    posterUrl: m.poster_url,
+  }));
+};
+
+export interface Movie {
+  id: number;
+  title: string;
+  duration: number;
+  posterUrl?: string;
+}
+
 
 export default api;

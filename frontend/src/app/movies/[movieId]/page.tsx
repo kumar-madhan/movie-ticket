@@ -24,12 +24,12 @@ export default function MovieDetailsPage() {
   return (
     <div className="flex flex-col md:flex-row gap-8">
       <Image
-        src={movie.poster_url}
-        alt={movie.title}
-        width={300}
-        height={400}
-        className="rounded-lg object-cover"
-      />
+  src={poster}
+  alt={movie.title}
+  width={240}
+  height={360}
+  className="rounded-md object-cover"
+/>
       <div>
         <h1 className="text-4xl font-bold mb-3">{movie.title}</h1>
         <p className="text-gray-300 mb-4">{movie.description}</p>
