@@ -1,36 +1,24 @@
-'use client';
-import { useSession } from 'next-auth/react';
-import { useQuery } from '@tanstack/react-query';
-import api from '@/lib/api';
-import Link from 'next/link';
+"use client";
+
+import { useEffect, useState } from "react";
+import api from "@/lib/api";
 
 export default function ProfilePage() {
-  const { data: session } = useSession();
-  const { data: bookings } = useQuery({
-    queryKey: ['bookings', session?.user?.id],
-    queryFn: async () => {
-        const res = await api.get(`/bookings/user/${session?.user?.id}`);
-        return res.data;
-    },
-    enabled: !!session?.user?.id,
-  });
+  const [user, setUser] = useState<any>(null);
 
-  if (!session) return <p>Please log in to see your profile.</p>;
+  useEffect(() => {
+    api.get("/users/me")
+      .then((res) => setUser(res.data))
+      .catch(() => (window.location.href = "/login"));
+  }, []);
+
+  if (!user) return <div className="text-white p-4">Loading...</div>;
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-4">My Bookings</h1>
-      <ul className="space-y-3">
-        {bookings?.map((b: any) => (
-          <li key={b.id} className="border p-3 rounded">
-            <p>Booking ID: {b.id}</p>
-            <p>Status: {b.status}</p>
-            <Link href={`/profile/tickets/${b.id}`} className="text-primary underline">
-              View Ticket
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <div className="p-6 text-white bg-gray-950 min-h-screen">
+      <h1 className="text-3xl font-bold mb-4 text-orange-400">Profile</h1>
+      <p>Email: {user.email}</p>
+      <p>Name: {user.name}</p>
     </div>
   );
 }

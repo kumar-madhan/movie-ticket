@@ -1,28 +1,37 @@
 package com.cinema.app.controller;
 
-import com.cinema.app.dto.LoginRequest;
-import com.cinema.app.dto.RegisterRequest;
+import com.cinema.app.dto.*;
 import com.cinema.app.service.AuthService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*")
+@RequiredArgsConstructor
 public class AuthController {
 
     private final AuthService authService;
 
-    public AuthController(AuthService authService) {
-        this.authService = authService;
-    }
-
+    // --- Register ---
     @PostMapping("/register")
-    public String register(@RequestBody RegisterRequest req) {
-        return authService.register(req.getEmail(), req.getName(), req.getPassword());
+    public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
+        AuthResponse response = authService.register(request);
+        return ResponseEntity.ok(response);
     }
 
+    // --- Login ---
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest req) {
-        return authService.login(req.getEmail(), req.getPassword());
+    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
+        AuthResponse response = authService.login(request);
+        return ResponseEntity.ok(response);
+    }
+
+    // --- Refresh token ---
+    @PostMapping("/refresh")
+    public ResponseEntity<AuthResponse> refreshToken(@Valid @RequestBody RefreshTokenRequest request) {
+        AuthResponse response = authService.refreshToken(request);
+        return ResponseEntity.ok(response);
     }
 }

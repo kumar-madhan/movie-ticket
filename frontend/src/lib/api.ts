@@ -1,23 +1,19 @@
-import axios from 'axios';
+import axios from "axios";
+import Cookies from "js-cookie";
+import { refreshToken } from "./auth";
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api',
-  withCredentials: true
+  baseURL: process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3001/api",
 });
 
-export const getMovies = async () => {
-  const res = await api.get('/movies');
-  return res.data;
-};
+api.interceptors.request.use(async (config) => {
+  let token = Cookies.get("access_token");
 
-export const getMovieById = async (id: string) => {
-  const res = await api.get(`/movies/${id}`);
-  return res.data;
-};
+  // Try refresh if no token
+  if (!token) token = await refreshToken();
 
-export const getShowtimesByMovie = async (movieId: string) => {
-  const res = await api.get(`/showtimes?movieId=${movieId}`);
-  return res.data;
-};
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
 
 export default api;

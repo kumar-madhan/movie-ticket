@@ -4,9 +4,11 @@
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/controller/BookingController.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/controller/MovieController.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/controller/ShowtimeController.java
+/home/admin/movie-ticket/backend/src/main/java/com/cinema/app/dto/AuthResponse.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/dto/BookingRequest.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/dto/LoginRequest.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/dto/PaymentRequest.java
+/home/admin/movie-ticket/backend/src/main/java/com/cinema/app/dto/RefreshTokenRequest.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/dto/RegisterRequest.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/model/Booking.java
 /home/admin/movie-ticket/backend/src/main/java/com/cinema/app/model/BookingSeat.java
