@@ -4,7 +4,10 @@ import { getMovies } from '@/lib/api';
 import MovieCard from '@/components/MovieCard';
 
 export default function MoviesPage() {
-  const { data: movies, isLoading } = useQuery(['movies'], getMovies);
+  const { data: movies, isLoading } = useQuery({
+    queryKey: ['movies'],
+    queryFn: getMovies,
+  });
 
   return (
     <div>

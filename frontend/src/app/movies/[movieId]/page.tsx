@@ -8,10 +8,16 @@ import Link from 'next/link';
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const router = useRouter();
-  const { data: movie } = useQuery(['movie', movieId], () => getMovieById(movieId as string));
-  const { data: showtimes } = useQuery(['showtimes', movieId], () =>
-    getShowtimesByMovie(movieId as string)
-  );
+  
+  const { data: movie } = useQuery({
+    queryKey: ['movie', movieId],
+    queryFn: () => getMovieById(movieId as string),
+  });
+
+  const { data: showtimes } = useQuery({
+    queryKey: ['showtimes', movieId],
+    queryFn: () => getShowtimesByMovie(movieId as string),
+  });
 
   if (!movie) return <p>Loading...</p>;
 

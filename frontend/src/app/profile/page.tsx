@@ -6,9 +6,13 @@ import Link from 'next/link';
 
 export default function ProfilePage() {
   const { data: session } = useSession();
-  const { data: bookings } = useQuery(['bookings'], async () => {
-    const res = await api.get(`/bookings/user/${session?.user?.id}`);
-    return res.data;
+  const { data: bookings } = useQuery({
+    queryKey: ['bookings', session?.user?.id],
+    queryFn: async () => {
+        const res = await api.get(`/bookings/user/${session?.user?.id}`);
+        return res.data;
+    },
+    enabled: !!session?.user?.id,
   });
 
   if (!session) return <p>Please log in to see your profile.</p>;
