@@ -1,3 +1,5 @@
+// src/lib/api.ts
+
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -13,9 +15,12 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+/**
+ * Movies
+ */
 export const getMovies = async () => {
   const res = await api.get("/movies");
-  return res.data;
+  return res.data; // MUST return poster_url as-is
 };
 
 export const getMovieById = async (id: string | number) => {
@@ -23,6 +28,9 @@ export const getMovieById = async (id: string | number) => {
   return res.data;
 };
 
+/**
+ * Showtimes
+ */
 export const getShowtimesByMovie = async (movieId: string | number) => {
   const res = await api.get(`/showtimes/movie/${movieId}`);
   return res.data;
