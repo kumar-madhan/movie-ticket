@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16
+    container_name: movieticket-db
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - movie-net
+
+  backend:
+    build:
+      context: ./backend
+    container_name: movieticket-backend
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - "3001:3001"
+    networks:
+      - movie-net
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: movieticket-frontend
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+    networks:
+      - movie-net
+
+volumes:
+  pgdata:
+
+networks:
+  movie-net:
+    driver: bridge
