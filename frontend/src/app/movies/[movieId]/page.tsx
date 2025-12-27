@@ -1,31 +1,37 @@
-'use client';
-import { useParams, useRouter } from 'next/navigation';
-import { useQuery } from '@tanstack/react-query';
-import { getMovieById, getShowtimesByMovie } from '@/lib/api';
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
+
+import { useParams } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { getMovieById, getShowtimesByMovie } from "@/lib/api";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
-  const router = useRouter();
-  
-  const { data: movie } = useQuery({
-    queryKey: ['movie', movieId],
+
+  const { data: movie, isLoading } = useQuery({
+    queryKey: ["movie", movieId],
     queryFn: () => getMovieById(movieId as string),
   });
 
   const { data: showtimes } = useQuery({
-    queryKey: ['showtimes', movieId],
+    queryKey: ["showtimes", movieId],
     queryFn: () => getShowtimesByMovie(movieId as string),
+    enabled: !!movieId,
   });
 
+  if (isLoading || !movie) {
+    return (
+      <p className="text-center text-gray-400 mt-10">
+        Loading movie details...
+      </p>
+    );
+  }
+
   const poster =
-  movie.poster_url && movie.poster_url.trim() !== ""
-    ? movie.poster_url
-    : "/placeholder-movie.png";
-
-
-  if (!movie) return <p>Loading...</p>;
+    movie.poster_url && movie.poster_url.trim() !== ""
+      ? movie.poster_url
+      : "/placeholder-movie.png";
 
   return (
     <div className="flex flex-col md:flex-row gap-8">
