@@ -1,8 +1,76 @@
-# Frontend files to ignore
-frontend/node_modules
-frontend/.next
-frontend/package-lock.json
+# =====================================
+# FRONTEND (Next.js)
+# =====================================
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/dist/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
 
-# Backend files to ignore
-backend/target
+# Environment files (frontend)
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# =====================================
+# BACKEND (Spring Boot / Maven)
+# =====================================
+backend/target/
+backend/*.jar
+backend/*.jar.original
 backend/nohup.out
+backend/logs/
+backend/*.log
+
+# Environment / secrets (backend)
+backend/.env
+backend/.env.*
+backend/src/main/resources/application-local.yml
+backend/src/main/resources/application-dev.yml
+backend/src/main/resources/application-prod.yml
+backend/src/main/resources/application-*.properties
+
+# =====================================
+# DATABASE / DUMPS
+# =====================================
+*.sql
+*.dump
+*.db
+*.sqlite
+*.sqlite3
+
+# =====================================
+# DOCKER (local-only)
+# =====================================
+docker-data/
+docker-compose.override.yml
+
+# =====================================
+# IDE / EDITORS
+# =====================================
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+.vscode/
+
+# =====================================
+# OS / TEMP FILES
+# =====================================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# =====================================
+# MISC
+# =====================================
+coverage/
+.nyc_output/
+.cache/
+.tmp/
+.temp/
