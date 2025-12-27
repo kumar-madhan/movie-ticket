@@ -6,10 +6,9 @@ import { motion } from "framer-motion";
 import { Movie } from "@/types";
 
 export default function MovieCard({ movie }: { movie: Movie }) {
-  const poster =
-    movie.poster_url && movie.poster_url.trim() !== ""
-      ? movie.poster_url
-      : "/placeholder-movie.png";
+  const hasPoster =
+    typeof movie.posterUrl === "string" &&
+    movie.posterUrl.trim().length > 0;
 
   return (
     <motion.div
@@ -19,14 +18,23 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     >
       <Link href={`/movies/${movie.id}`}>
         <div className="relative aspect-[2/3] w-full">
-          <Image
-            src={poster}
-            alt={movie.title}
-            fill
-            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 20vw, 15vw"
-            className="object-cover"
-            priority={false}
-          />
+          {hasPoster ? (
+            <Image
+              key={movie.posterUrl} // 🔑 forces re-render when src changes
+              src={movie.posterUrl}
+              alt={movie.title}
+              fill
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 20vw, 15vw"
+              className="object-cover"
+            />
+          ) : (
+            <Image
+              src="/placeholder-movie.png"
+              alt="No poster available"
+              fill
+              className="object-cover opacity-80"
+            />
+          )}
         </div>
 
         {/* Overlay */}

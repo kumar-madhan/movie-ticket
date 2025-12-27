@@ -1,30 +1,24 @@
-import './globals.css';
-import { ReactNode } from 'react';
-import Navbar from '@/components/Navbar';
-// import ReactQueryProvider from '@/components/providers/ReactQueryProvider';
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 
-// export default function RootLayout({ children }: { children: ReactNode }) {
-//   return (
-//     <html lang="en">
-//       <body className="min-h-screen flex flex-col bg-black text-white">
-//         <ReactQueryProvider>
-//           <Navbar />
-//           <main className="flex-1">
-//             {children}
-//           </main>
-//         </ReactQueryProvider>
-//       </body>
-//     </html>
-//   );
-// }
+export const metadata = {
+  title: "CineVerse",
+  description: "Book movie tickets easily",
+};
 
-import Providers from '@/components/providers/Providers';
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body>
-        <Providers>{children}</Providers>
+      <body className="bg-zinc-950 text-white min-h-screen">
+        <ReactQueryProvider>
+          <Navbar />
+          <main className="pt-4">{children}</main>
+        </ReactQueryProvider>
       </body>
     </html>
   );
