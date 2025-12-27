@@ -5,3 +5,4 @@ frontend/package-lock.json
 
 # Backend files to ignore
 backend/target
+backend/nohup.out
