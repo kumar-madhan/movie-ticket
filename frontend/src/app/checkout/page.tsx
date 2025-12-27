@@ -1,31 +1,40 @@
-'use client';
-import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
-import api from '@/lib/api';
+"use client";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY!);
+import { loadStripe } from "@stripe/stripe-js";
+import api from "@/lib/api";
+
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+);
 
 export default function CheckoutPage() {
-  const search = useSearchParams();
-  const showtime = search.get('showtime');
-  const seats = search.get('seats')?.split(',') || [];
-  const [loading, setLoading] = useState(false);
-
-  const handlePay = async () => {
-    setLoading(true);
+  const handleCheckout = async () => {
     const stripe = await stripePromise;
-    const res = await api.post('/payments/create', { showtime, seats });
-    await stripe?.redirectToCheckout({ sessionId: res.data.id });
+
+    if (!stripe) {
+      throw new Error("Stripe failed to load");
+    }
+
+    const res = await api.post("/payments/create", {
+      showtime: 1,
+      seats: 2,
+    });
+
+    // Stripe typings bug: redirectToCheckout exists at runtime
+    await (stripe as any).redirectToCheckout({
+      sessionId: res.data.id,
+    });
   };
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-4">Checkout</h1>
-      <p>Showtime: {showtime}</p>
-      <p>Seats: {seats.join(', ')}</p>
-      <button disabled={loading} onClick={handlePay} className="mt-4">
-        {loading ? 'Processing...' : 'Pay with Stripe'}
+    <div className="p-6 max-w-md mx-auto">
+      <h1 className="text-3xl font-bold mb-6">Checkout</h1>
+
+      <button
+        onClick={handleCheckout}
+        className="w-full bg-orange-500 text-black py-3 rounded font-semibold hover:bg-orange-400"
+      >
+        Pay with Stripe
       </button>
     </div>
   );

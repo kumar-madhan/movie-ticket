@@ -1,48 +1,41 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
-import { register } from "@/lib/auth";
+import { useRouter, useSearchParams } from "next/navigation";
+import Cookies from "js-cookie";
+import api from "@/lib/api";
 
-export default function RegisterPage() {
+export default function LoginClient() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect") || "/";
 
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setError("");
 
     try {
-      await register({
-        name,
+      const res = await api.post("/auth/login", {
         email,
         password,
       });
 
-      setMessage("Registration successful! Redirecting...");
-      setTimeout(() => router.push("/login"), 1500);
+      Cookies.set("token", res.data.token);
+      router.push(redirectTo);
     } catch {
-      setMessage("Registration failed. Please try again.");
+      setError("Invalid email or password");
     }
   };
 
   return (
     <div className="p-6 max-w-md mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Register</h1>
+      <h1 className="text-3xl font-bold mb-6">Login</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full p-3 bg-zinc-800 rounded"
-          required
-        />
-
         <input
           type="email"
           placeholder="Email"
@@ -65,12 +58,12 @@ export default function RegisterPage() {
           type="submit"
           className="w-full bg-orange-500 text-black py-3 rounded font-semibold hover:bg-orange-400"
         >
-          Register
+          Login
         </button>
       </form>
 
-      {message && (
-        <p className="mt-4 text-center text-gray-400">{message}</p>
+      {error && (
+        <p className="mt-4 text-center text-red-400">{error}</p>
       )}
     </div>
   );

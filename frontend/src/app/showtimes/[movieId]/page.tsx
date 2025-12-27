@@ -1,13 +1,18 @@
-'use client';
-import { useParams } from 'next/navigation';
-import { useQuery } from '@tanstack/react-query';
-import { getShowtimesByMovie } from '@/lib/api';
+"use client";
+
+import { useParams } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { getShowtimesByMovie } from "@/lib/api";
 
 export default function ShowtimesPage() {
-  const { movieId } = useParams();
-  const { data: showtimes, isLoading } = useQuery(['showtimes', movieId], () =>
-    getShowtimesByMovie(movieId as string)
-  );
+  const params = useParams();
+  const movieId = params?.movieId as string | undefined;
+
+  const { data: showtimes, isLoading } = useQuery({
+    queryKey: ["showtimes", movieId],
+    enabled: !!movieId,
+    queryFn: () => getShowtimesByMovie(movieId!),
+  });
 
   if (isLoading) return <p>Loading...</p>;
 
@@ -18,15 +23,19 @@ export default function ShowtimesPage() {
         {showtimes?.map((s: any) => (
           <li
             key={s.id}
-            className="border border-zinc-700 rounded p-3 flex justify-between items-center"
+            className="border border-zinc-700 rounded p-3"
           >
-            <div>
-              <p>{new Date(s.start_time).toLocaleString()}</p>
-              <p className="text-gray-400">Regular: ${s.price_regular}</p>
-            </div>
+            <p>{new Date(s.start_time).toLocaleString()}</p>
+            <p className="text-gray-400">
+              Regular: ${s.price_regular}
+            </p>
           </li>
         ))}
       </ul>
+
+      {showtimes?.length === 0 && (
+        <p className="text-gray-400 mt-4">No showtimes available.</p>
+      )}
     </div>
   );
 }
