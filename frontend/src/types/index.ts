@@ -7,14 +7,6 @@ export interface Movie {
   poster_url: string;
 }
 
-export interface Showtime {
-  id: number;
-  movie_id: number;
-  start_time: string;
-  price_regular: number;
-  price_premium: number;
-}
-
 export interface Booking {
   id: number;
   user_id: number;

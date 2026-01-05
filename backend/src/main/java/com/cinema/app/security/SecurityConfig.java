@@ -33,6 +33,8 @@ public class SecurityConfig {
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/movies/**").permitAll()
                 .requestMatchers("/api/showtimes/**").permitAll()
+                .requestMatchers("/api/screens/**").permitAll()
+                .requestMatchers("/api/seats/**").permitAll()
                 .anyRequest().authenticated()
             )
             .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

@@ -1,57 +1,44 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import SeatGrid from '@/components/SeatGrid';
-import BookingSummary from '@/components/BookingSummary';
-import { Seat } from '@/types/seat';
-import { Showtime } from '@/types/showtime';
+import { useParams } from 'next/navigation';
 import { getShowtimeById } from '@/lib/api';
+import SeatGrid from '@/components/SeatGrid';
+import type { Showtime } from '@/types/showtime';
 
 export default function BookingPage() {
   const params = useParams();
-  const router = useRouter();
   const showtimeId = Number(params.showtimeId);
 
   const [showtime, setShowtime] = useState<Showtime | null>(null);
-  const [selectedSeats, setSelectedSeats] = useState<Seat[]>([]);
-  const [totalAmount, setTotalAmount] = useState<number>(0);
 
   useEffect(() => {
-    getShowtimeById(showtimeId).then(res =>
-      setShowtime(res.data)
-    );
+    const load = async () => {
+      const st = await getShowtimeById(showtimeId);
+      setShowtime(st);
+    };
+
+    load();
   }, [showtimeId]);
 
-  if (!showtime) return null;
-
-  const handleProceed = () => {
-    router.push(
-      `/checkout?showtime=${showtimeId}&seats=${selectedSeats
-        .map(s => s.id)
-        .join(',')}&total=${totalAmount}`
+  if (!showtime) {
+    return (
+      <div className="p-6 text-gray-400">
+        Loading showtime...
+      </div>
     );
-  };
+  }
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Select Your Seats</h1>
+    <div className="p-6 max-w-4xl mx-auto space-y-6">
+      <h1 className="text-2xl font-bold">
+        Select Your Seats
+      </h1>
 
       <SeatGrid
-        screenId={showtime.screen.id}
+        screenId={showtime.screenId}
         showtimeId={showtimeId}
-        onChange={(seats, total) => {
-          setSelectedSeats(seats);
-          setTotalAmount(total);
-        }}
-      />
-
-      <BookingSummary
-        selectedSeats={selectedSeats.map(
-          s => `${s.rowLabel}${s.number}`
-        )}
-        totalAmount={totalAmount}
-        onProceed={handleProceed}
+        onChange={() => {}}
       />
     </div>
   );

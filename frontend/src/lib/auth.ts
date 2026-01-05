@@ -55,10 +55,26 @@ export const isLoggedIn = () =>
   !!localStorage.getItem(ACCESS_TOKEN_KEY);
 
 export const getUserIdFromToken = (): number | null => {
-  if (typeof window === 'undefined') return null;
-  const token = localStorage.getItem('accessToken');
+  const token = getAccessToken();
   if (!token) return null;
 
-  const payload = JSON.parse(atob(token.split('.')[1]));
-  return payload.userId ?? null;
+  try {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url
+      .replace(/-/g, '+')
+      .replace(/_/g, '/');
+
+    const payload = JSON.parse(
+      decodeURIComponent(
+        atob(base64)
+          .split('')
+          .map(c => `%${('00' + c.charCodeAt(0).toString(16)).slice(-2)}`)
+          .join('')
+      )
+    );
+
+    return payload.userId ?? null;
+  } catch {
+    return null;
+  }
 };

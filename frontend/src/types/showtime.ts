@@ -1,14 +1,19 @@
 import { SeatType } from './seat';
 
-export interface Screen {
+export type Showtime = {
   id: number;
-  name: string;
-}
-
-export interface Showtime {
-  id: number;
+  movieId?: number;
+  movieTitle?: string;
+  screenId: number;
+  screenNumber: number;
+  theaterName: string;
   startTime: string;
   priceRegular: number;
   pricePremium: number;
-  screen: Screen;
+};
+
+
+export interface Screen {
+  id: number;
+  name: string;
 }

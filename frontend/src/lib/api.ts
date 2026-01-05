@@ -6,8 +6,12 @@ import {
   clearTokens,
 } from './auth';
 
+/* ================= AXIOS INSTANCE ================= */
+
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL ?? 'http://localhost:3001/api',
+  baseURL:
+    process.env.NEXT_PUBLIC_API_BASE_URL ??
+    'http://localhost:3001/api',
 });
 
 /* ---------- REQUEST ---------- */
@@ -46,7 +50,8 @@ api.interceptors.response.use(
         });
 
         setTokens(res.data.accessToken, res.data.refreshToken);
-        original.headers.Authorization = `Bearer ${res.data.accessToken}`;
+        original.headers.Authorization =
+          `Bearer ${res.data.accessToken}`;
         return api(original);
       } catch {
         clearTokens();
@@ -58,52 +63,111 @@ api.interceptors.response.use(
   }
 );
 
-/* ---------- API CALLS ---------- */
+/* ================= API CALLS ================= */
 
-/* User login */
+/* ---------- AUTH ---------- */
 export const login = (email: string, password: string) =>
   api.post('/auth/login', { email, password });
 
-/* User registration */
-export const register = (name: string, email: string, password: string) =>
+export const register = (
+  name: string,
+  email: string,
+  password: string
+) =>
   api.post('/auth/register', { name, email, password });
 
-/* Getting all movies */
+/* ---------- MOVIES ---------- */
 export const getMovies = async () => {
   const res = await api.get('/movies');
-  return res.data;
+
+  return res.data.map((m: any) => ({
+    id: m.id,
+    title: m.title,
+    description: m.description,
+    duration: m.duration,
+    rating: m.rating,
+    poster_url: m.poster_url ?? '',
+  }));
 };
 
-/* Getting movie by ID */
-export const getMovieById = async (id: number | string) => {
+export const getMovieById = async (id: number) => {
   const res = await api.get(`/movies/${id}`);
   return res.data;
 };
 
-/* Getting showtimes for a movie */
+/* ---------- SHOWTIMES ---------- */
+export const getShowtimes = async () => {
+  const res = await api.get('/showtimes');
+  return res.data.map((s: any) => ({
+    ...s,
+    startTime: s.start_time,
+  }));
+};
+
 export const getShowtimesByMovie = async (movieId: number) => {
-  const res = await axios.get(`/api/showtimes`);
+  const res = await api.get('/showtimes');
+
   return res.data
     .filter((s: any) => s.movie_id === movieId)
     .map((s: any) => ({
-      ...s,
-      startTime: s.start_time, // ✅ FIX
+      id: s.id,
+      movieId: s.movie_id,
+      movieTitle: s.movie_title,
+      screenId: s.screen_id,
+      screenNumber: s.screen_number,
+      theaterName: s.theater_name,
+      startTime: s.start_time,
+      priceRegular: s.price_regular,
+      pricePremium: s.price_premium,
     }));
 };
 
+export const getShowtimeById = async (id: number) => {
+  const res = await api.get(`/showtimes/${id}`);
+  const s = res.data;
 
-/* Getting showtime by ID */
-export const getShowtimeById = (id: number) =>
-  api.get(`/showtimes/${id}`);
+  return {
+    id: s.id,
+    movieId: s.movie_id,
+    movieTitle: s.movie_title,
+    screenId: s.screen_id,
+    screenNumber: s.screen_number,
+    theaterName: s.theater_name,
+    startTime: s.start_time,
+    priceRegular: s.price_regular,
+    pricePremium: s.price_premium,
+  };
+};
 
-/* Getting seats for a screen */
-export const getSeatsByScreen = (screenId: number) =>
-  api.get(`/screens/${screenId}/seats`);
+/* ---------- SEATS ---------- */
+export const getSeatsByScreen = async (screenId: number) => {
+  const res = await api.get(`/screens/${screenId}/seats`);
+  return res.data;
+};
 
-/* Getting booked seats for a showtime */
-export const getBookedSeatsByShowtime = (showtimeId: number) =>
-  api.get(`/showtimes/${showtimeId}/seats`);
+export const getBookedSeatsByShowtime = async (
+  showtimeId: number
+) => {
+  const res = await api.get(
+    `/showtimes/${showtimeId}/seats`
+  );
+  return res.data;
+};
 
-/* Booking a seat */
-export const getUserBookings = (userId: number) =>
+/* ---------- BOOKINGS ---------- */
+export const createBooking = async (
+  showtimeId: number,
+  seatIds: number[],
+  totalAmount: number
+) =>
+  api.post('/bookings', {
+    showtimeId,
+    seatIds,
+    totalAmount,
+  });
+
+export const getUserBookings = async (userId: number) =>
   api.get(`/bookings/user/${userId}`);
+
+export const getBookingById = async (bookingId: number) =>
+  api.get(`/bookings/${bookingId}`);
