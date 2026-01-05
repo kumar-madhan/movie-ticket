@@ -1,6 +1,4 @@
-# =====================================
 # FRONTEND (Next.js)
-# =====================================
 frontend/node_modules/
 frontend/.next/
 frontend/out/
@@ -15,9 +13,7 @@ frontend/.env
 frontend/.env.*
 !frontend/.env.example
 
-# =====================================
 # BACKEND (Spring Boot / Maven)
-# =====================================
 backend/target/
 backend/*.jar
 backend/*.jar.original
@@ -33,24 +29,18 @@ backend/src/main/resources/application-dev.yml
 backend/src/main/resources/application-prod.yml
 backend/src/main/resources/application-*.properties
 
-# =====================================
 # DATABASE / DUMPS
-# =====================================
 *.sql
 *.dump
 *.db
 *.sqlite
 *.sqlite3
 
-# =====================================
 # DOCKER (local-only)
-# =====================================
 docker-data/
 docker-compose.override.yml
 
-# =====================================
 # IDE / EDITORS
-# =====================================
 .idea/
 *.iml
 .project
@@ -58,17 +48,13 @@ docker-compose.override.yml
 .settings/
 .vscode/
 
-# =====================================
 # OS / TEMP FILES
-# =====================================
 .DS_Store
 Thumbs.db
 *.swp
 *.swo
 
-# =====================================
 # MISC
-# =====================================
 coverage/
 .nyc_output/
 .cache/
