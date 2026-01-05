@@ -1,23 +1,25 @@
 package com.cinema.app.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
-@Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "booking_seats")
-@IdClass(BookingSeatId.class)
 public class BookingSeat {
 
-    @Id
-    @ManyToOne
+    @EmbeddedId
+    private BookingSeatId id = new BookingSeatId();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("bookingId")
     @JoinColumn(name = "booking_id")
     private Booking booking;
 
-    @Id
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("seatId")
     @JoinColumn(name = "seat_id")
     private Seat seat;
 }

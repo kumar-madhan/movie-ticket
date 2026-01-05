@@ -1,24 +1,22 @@
-'use client';
-
-import { useMemo } from 'react';
-
 interface Props {
   selectedSeats: string[];
+  totalAmount: number;
   onProceed: () => void;
 }
 
-export default function BookingSummary({ selectedSeats, onProceed }: Props) {
-  const total = useMemo(() => selectedSeats.length * 10, [selectedSeats]);
-
+export default function BookingSummary({
+  selectedSeats,
+  totalAmount,
+  onProceed,
+}: Props) {
   return (
-    <div className="bg-zinc-900 p-4 rounded border border-zinc-800 w-full max-w-md mx-auto">
-      <h3 className="text-xl font-semibold mb-2">Booking Summary</h3>
-      <p>Seats: {selectedSeats.join(', ') || 'None selected'}</p>
-      <p>Total: ${total.toFixed(2)}</p>
+    <div className="p-4 rounded bg-slate-800 space-y-3">
+      <div>Seats: {selectedSeats.join(', ') || 'None'}</div>
+      <div>Total: ₹{totalAmount}</div>
       <button
-        onClick={onProceed}
         disabled={selectedSeats.length === 0}
-        className="mt-3 bg-primary px-4 py-2 rounded hover:bg-orange-600 disabled:opacity-40"
+        onClick={onProceed}
+        className="px-4 py-2 bg-indigo-600 rounded disabled:opacity-50"
       >
         Proceed to Checkout
       </button>

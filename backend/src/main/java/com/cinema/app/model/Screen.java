@@ -1,12 +1,12 @@
 package com.cinema.app.model;
 
 import jakarta.persistence.*;
-import lombok.*;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "screens")
 public class Screen {
 
@@ -14,15 +14,13 @@ public class Screen {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
     @ManyToOne
-    @JoinColumn(name = "theater_id")
+    @JoinColumn(name = "theater_id", nullable = false)
     private Theater theater;
 
-    @Lob
-    private String seatLayout; // JSON seat layout
+    @Column(name = "screen_number")
+    private Integer screenNumber;
 
-    @OneToMany(mappedBy = "screen", cascade = CascadeType.ALL)
-    private List<Seat> seats;
+    @Column(name = "total_seats")
+    private Integer totalSeats;
 }

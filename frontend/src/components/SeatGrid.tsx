@@ -1,54 +1,79 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import type { AxiosResponse } from 'axios';
+import { Seat } from '@/types/seat';
+import {
+  getSeatsByScreen,
+  getBookedSeatsByShowtime,
+} from '@/lib/api';
 
-interface SeatGridProps {
-  selectedSeats: string[];
-  setSelectedSeats: (seats: string[]) => void;
+interface Props {
+  screenId: number;
+  showtimeId: number;
+  onChange: (seats: Seat[], total: number) => void;
 }
 
-const rows = ['A', 'B', 'C', 'D', 'E'];
-const seatsPerRow = 10;
+export default function SeatGrid({
+  screenId,
+  showtimeId,
+  onChange,
+}: Props) {
+  const [seats, setSeats] = useState<Seat[]>([]);
+  const [bookedSeatIds, setBookedSeatIds] = useState<number[]>([]);
+  const [selected, setSelected] = useState<Seat[]>([]);
 
-export default function SeatGrid({ selectedSeats, setSelectedSeats }: SeatGridProps) {
-  const [bookedSeats] = useState<string[]>(['A3', 'A4', 'B5']); // demo only
+  useEffect(() => {
+    getSeatsByScreen(screenId).then(
+      (res: AxiosResponse<Seat[]>) => setSeats(res.data)
+    );
 
-  const toggleSeat = (seatId: string) => {
-    if (bookedSeats.includes(seatId)) return;
-    if (selectedSeats.includes(seatId)) {
-      setSelectedSeats(selectedSeats.filter((s) => s !== seatId));
-    } else {
-      setSelectedSeats([...selectedSeats, seatId]);
-    }
+    getBookedSeatsByShowtime(showtimeId).then(
+      (res: AxiosResponse<{ bookedSeatIds: number[] }>) =>
+        setBookedSeatIds(res.data.bookedSeatIds)
+    );
+  }, [screenId, showtimeId]);
+
+  const totalFor = (items: Seat[]) =>
+    items.reduce(
+      (sum, s) => sum + (s.type === 'PREMIUM' ? 300 : 200),
+      0
+    );
+
+  const toggle = (seat: Seat) => {
+    if (bookedSeatIds.includes(seat.id)) return;
+
+    const next = selected.some(s => s.id === seat.id)
+      ? selected.filter(s => s.id !== seat.id)
+      : [...selected, seat];
+
+    setSelected(next);
+    onChange(next, totalFor(next));
   };
 
   return (
-    <div className="flex flex-col gap-2 items-center">
-      {rows.map((row) => (
-        <div key={row} className="flex gap-1">
-          {Array.from({ length: seatsPerRow }, (_, i) => {
-            const seatId = `${row}${i + 1}`;
-            const isBooked = bookedSeats.includes(seatId);
-            const isSelected = selectedSeats.includes(seatId);
-            return (
-              <button
-                key={seatId}
-                onClick={() => toggleSeat(seatId)}
-                disabled={isBooked}
-                className={`w-8 h-8 text-sm rounded ${
-                  isBooked
-                    ? 'bg-gray-600 cursor-not-allowed'
-                    : isSelected
-                    ? 'bg-primary'
-                    : 'bg-zinc-800 hover:bg-zinc-700'
-                }`}
-              >
-                {i + 1}
-              </button>
-            );
-          })}
-        </div>
-      ))}
+    <div className="grid grid-cols-10 gap-2">
+      {seats.map(seat => {
+        const booked = bookedSeatIds.includes(seat.id);
+        const active = selected.some(s => s.id === seat.id);
+
+        return (
+          <button
+            key={seat.id}
+            disabled={booked}
+            onClick={() => toggle(seat)}
+            className={[
+              'w-10 h-10 rounded text-xs',
+              booked && 'bg-gray-500 cursor-not-allowed',
+              active && 'bg-green-500',
+              !booked && !active && 'bg-slate-700',
+            ].join(' ')}
+          >
+            {seat.rowLabel}
+            {seat.number}
+          </button>
+        );
+      })}
     </div>
   );
 }

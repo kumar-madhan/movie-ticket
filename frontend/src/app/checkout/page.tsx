@@ -1,41 +1,58 @@
-"use client";
+'use client';
 
-import { loadStripe } from "@stripe/stripe-js";
-import api from "@/lib/api";
-
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-);
+import { useSearchParams, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { api } from '@/lib/api';
 
 export default function CheckoutPage() {
-  const handleCheckout = async () => {
-    const stripe = await stripePromise;
+  const params = useSearchParams();
+  const router = useRouter();
 
-    if (!stripe) {
-      throw new Error("Stripe failed to load");
-    }
+  const showtimeId = Number(params.get('showtime'));
+  const seatIds = (params.get('seats') || '')
+    .split(',')
+    .filter(Boolean)
+    .map(Number);
+  const totalAmount = Number(params.get('total'));
 
-    const res = await api.post("/payments/create", {
-      showtime: 1,
-      seats: 2,
+  const [bookingId, setBookingId] = useState<number | null>(null);
+
+  const confirmBooking = async () => {
+    const res = await api.post('/bookings', {
+      userId: 1,
+      showtimeId,
+      seatIds,
+      totalAmount,
     });
 
-    // Stripe typings bug: redirectToCheckout exists at runtime
-    await (stripe as any).redirectToCheckout({
-      sessionId: res.data.id,
-    });
+    setBookingId(res.data.id);
   };
 
-  return (
-    <div className="p-6 max-w-md mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Checkout</h1>
+  useEffect(() => {
+    if (seatIds.length > 0) {
+      confirmBooking();
+    }
+  }, []);
 
-      <button
-        onClick={handleCheckout}
-        className="w-full bg-orange-500 text-black py-3 rounded font-semibold hover:bg-orange-400"
-      >
-        Pay with Stripe
-      </button>
+  return (
+    <div className="space-y-6">
+      <h1 className="text-3xl font-bold">Booking Confirmation</h1>
+
+      <div className="p-4 bg-slate-800 rounded space-y-2">
+        <div>Showtime ID: {showtimeId}</div>
+        <div>Seats: {seatIds.join(', ')}</div>
+        <div>Total: ₹{totalAmount}</div>
+        {bookingId && <div>Booking ID: {bookingId}</div>}
+      </div>
+
+      {bookingId && (
+        <button
+          onClick={() => router.push(`/profile/tickets/${bookingId}`)}
+          className="px-4 py-2 bg-green-600 rounded"
+        >
+          View Ticket
+        </button>
+      )}
     </div>
   );
 }

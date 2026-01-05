@@ -1,13 +1,15 @@
 package com.cinema.app.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Data
-@Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "bookings")
 public class Booking {
 
@@ -15,21 +17,20 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "showtime_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "showtime_id", nullable = false)
     private Showtime showtime;
 
+    @Column(name = "booking_time")
+    private LocalDateTime bookingTime;
+
+    @Column(name = "total_amount")
     private Double totalAmount;
-    private String status;
-    private String qrCode;
 
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
     private List<BookingSeat> bookingSeats;
-
-    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
-    private List<Payment> payments;
 }

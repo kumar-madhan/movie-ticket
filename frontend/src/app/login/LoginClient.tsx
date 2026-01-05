@@ -1,33 +1,41 @@
-"use client";
+'use client';
 
-import { useState, type FormEvent } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import Cookies from "js-cookie";
-import api from "@/lib/api";
+import { useState, type FormEvent } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import Cookies from 'js-cookie';
+import { setTokens } from '@/lib/auth';
+import { api } from '@/lib/api';
 
 export default function LoginClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectTo = searchParams.get("redirect") || "/";
+  const redirectTo = searchParams.get('redirect') || '/';
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError("");
+    setError('');
 
     try {
-      const res = await api.post("/auth/login", {
+      const res = await api.post('/auth/login', {
         email,
         password,
       });
 
-      Cookies.set("token", res.data.token);
-      router.push(redirectTo);
+      const { accessToken, refreshToken } = res.data;
+
+      setTokens(accessToken, refreshToken);
+
+      Cookies.set('accessToken', accessToken);
+      Cookies.set('refreshToken', refreshToken);
+
+      router.replace(redirectTo);
+      router.refresh(); // ✅ FORCE STATE + COOKIE RELOAD
     } catch {
-      setError("Invalid email or password");
+      setError('Invalid email or password');
     }
   };
 
@@ -40,7 +48,7 @@ export default function LoginClient() {
           type="email"
           placeholder="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
           className="w-full p-3 bg-zinc-800 rounded"
           required
         />
@@ -49,7 +57,7 @@ export default function LoginClient() {
           type="password"
           placeholder="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
           className="w-full p-3 bg-zinc-800 rounded"
           required
         />
@@ -63,7 +71,9 @@ export default function LoginClient() {
       </form>
 
       {error && (
-        <p className="mt-4 text-center text-red-400">{error}</p>
+        <p className="mt-4 text-center text-red-400">
+          {error}
+        </p>
       )}
     </div>
   );

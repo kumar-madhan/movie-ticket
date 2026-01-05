@@ -1,4 +1,6 @@
 package com.cinema.app.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,10 +20,12 @@ public class Showtime {
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
+    @JsonBackReference
     private Movie movie;
 
     @ManyToOne
     @JoinColumn(name = "screen_id")
+    @JsonBackReference
     private Screen screen;
 
     private LocalDateTime startTime;

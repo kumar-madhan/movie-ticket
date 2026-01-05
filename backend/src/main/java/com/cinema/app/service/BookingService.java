@@ -1,56 +1,79 @@
 package com.cinema.app.service;
 
+import com.cinema.app.dto.BookingRequest;
+import com.cinema.app.dto.BookingResponse;
 import com.cinema.app.model.*;
 import com.cinema.app.repository.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class BookingService {
 
-    private final BookingRepository bookingRepo;
-    private final BookingSeatRepository bookingSeatRepo;
-    private final SeatRepository seatRepo;
-    private final UserRepository userRepo;
-    private final ShowtimeRepository showtimeRepo;
-    private final PaymentRepository paymentRepo;
-
-    public BookingService(BookingRepository bookingRepo, BookingSeatRepository bookingSeatRepo,
-                          SeatRepository seatRepo, UserRepository userRepo,
-                          ShowtimeRepository showtimeRepo, PaymentRepository paymentRepo) {
-        this.bookingRepo = bookingRepo;
-        this.bookingSeatRepo = bookingSeatRepo;
-        this.seatRepo = seatRepo;
-        this.userRepo = userRepo;
-        this.showtimeRepo = showtimeRepo;
-        this.paymentRepo = paymentRepo;
-    }
+    private final BookingRepository bookingRepository;
+    private final UserRepository userRepository;
+    private final ShowtimeRepository showtimeRepository;
+    private final SeatRepository seatRepository;
+    private final BookingSeatRepository bookingSeatRepository;
 
     @Transactional
-    public Booking createBooking(Long userId, Long showtimeId, List<Long> seatIds, Double totalAmount) {
-        User user = userRepo.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-        Showtime showtime = showtimeRepo.findById(showtimeId).orElseThrow(() -> new RuntimeException("Showtime not found"));
+    public BookingResponse createBooking(String userEmail, BookingRequest req) {
+        User user = userRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        Showtime showtime = showtimeRepository.findById(req.getShowtimeId())
+                .orElseThrow(() -> new RuntimeException("Showtime not found"));
 
         Booking booking = new Booking();
         booking.setUser(user);
         booking.setShowtime(showtime);
-        booking.setStatus("CONFIRMED");
-        booking.setTotalAmount(totalAmount);
-        bookingRepo.save(booking);
+        booking.setTotalAmount(req.getTotalAmount());
+        booking.setBookingTime(LocalDateTime.now());
+        booking = bookingRepository.save(booking);
 
-        for (Long seatId : seatIds) {
-            Seat seat = seatRepo.findById(seatId).orElseThrow(() -> new RuntimeException("Seat not found"));
+        List<Seat> seats = seatRepository.findAllById(req.getSeatIds());
+        for (Seat seat : seats) {
             BookingSeat bs = new BookingSeat();
             bs.setBooking(booking);
             bs.setSeat(seat);
-            bookingSeatRepo.save(bs);
+            bookingSeatRepository.save(bs);
         }
 
-        return booking;
+        return mapToResponse(booking);
     }
 
-    public List<Booking> getUserBookings(Long userId) {
-        return bookingRepo.findByUserId(userId);
+    public List<BookingResponse> getBookingsByUserEmail(String email) {
+        return bookingRepository.findByUserEmail(email)
+                .stream().map(this::mapToResponse).collect(Collectors.toList());
+    }
+
+    public BookingResponse getBookingById(Long id, String email) {
+        Booking booking = bookingRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Booking not found"));
+        if (!booking.getUser().getEmail().equals(email)) {
+            throw new RuntimeException("Unauthorized");
+        }
+        return mapToResponse(booking);
+    }
+
+    private BookingResponse mapToResponse(Booking b) {
+        return BookingResponse.builder()
+                .id(b.getId())
+                .movieTitle(b.getShowtime().getMovie().getTitle())
+                .theaterName(b.getShowtime().getScreen().getTheater().getName())
+                .screenNumber(b.getShowtime().getScreen().getScreenNumber())
+                .startTime(b.getShowtime().getStartTime().toString())
+                .bookingDate(b.getBookingTime().toString())
+                .totalAmount(b.getTotalAmount())
+                .seats(b.getBookingSeats().stream()
+                        .map(bs -> bs.getSeat().getRowLabel() + bs.getSeat().getSeatNumber())
+                        .collect(Collectors.toList()))
+                .build();
     }
 }

@@ -1,31 +1,29 @@
-server:
-  port: 3001
-
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/movieticket
     username: postgres
     password: postgres
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
-      ddl-auto: validate
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: create
+      dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
+    defer-datasource-initialization: true
+
   sql:
     init:
       mode: always
-      data-locations: classpath:data.sql
-  mail:
-    host: smtp.mailtrap.io
-    port: 2525
-    username: dummy
-    password: dummy
-    properties:
-      mail.smtp.auth: true
-      mail.smtp.starttls.enable: true
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    serialization:
+      fail-on-empty-beans: false
+
+server:
+  port: 3001
 
 jwt:
   secret: c3VwZXItc2VjcmV0LWp3dC1rZXktZm9yLW1vdmllLWFwcA==
+  expiration: 86400000

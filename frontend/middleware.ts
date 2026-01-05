@@ -1,35 +1,25 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-const PROTECTED_ROUTES = [
-  "/booking",
-  "/checkout",
-  "/profile",
-  "/admin",
-];
+export function middleware(req: NextRequest) {
+  const token = req.cookies.get('accessToken');
 
-export function middleware(request: NextRequest) {
-  const token = request.cookies.get("jwt")?.value;
-  const { pathname } = request.nextUrl;
+  const protectedPaths = [
+    '/profile',
+    '/checkout',
+    '/booking',
+    '/admin',
+  ];
 
-  const isProtected = PROTECTED_ROUTES.some((route) =>
-    pathname.startsWith(route)
+  const isProtected = protectedPaths.some(p =>
+    req.nextUrl.pathname.startsWith(p)
   );
 
   if (isProtected && !token) {
-    const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("redirect", pathname);
+    const loginUrl = new URL('/login', req.url);
+    loginUrl.searchParams.set('redirect', req.nextUrl.pathname);
     return NextResponse.redirect(loginUrl);
   }
 
   return NextResponse.next();
 }
-
-export const config = {
-  matcher: [
-    "/booking/:path*",
-    "/checkout",
-    "/profile/:path*",
-    "/admin/:path*",
-  ],
-};

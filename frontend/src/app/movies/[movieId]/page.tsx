@@ -1,77 +1,163 @@
-"use client";
+'use client';
 
-import { useParams } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
-import { getMovieById, getShowtimesByMovie } from "@/lib/api";
-import Image from "next/image";
-import Link from "next/link";
-import { Movie } from "@/types";
+import { useParams, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { api } from '@/lib/api';
 
-export default function MovieDetailsPage() {
-  const { movieId } = useParams();
+export default function MovieDetailPage() {
+  const params = useParams();
+  const router = useRouter();
+  const movieId = Number(params.movieId);
 
-  const { data: movie, isLoading } = useQuery<Movie>({
-    queryKey: ["movie", movieId],
-    queryFn: () => getMovieById(movieId as string),
-  });
+  const [movie, setMovie] = useState<any>(null);
+  const [showtimes, setShowtimes] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const {
-    data: showtimes,
-    error: showtimesError,
-  } = useQuery({
-    queryKey: ["showtimes", movieId],
-    queryFn: () => getShowtimesByMovie(movieId as string),
-    retry: false,
-  });
+  useEffect(() => {
+    Promise.all([
+      api.get(`/movies/${movieId}`),
+      api.get(`/showtimes?movieId=${movieId}`),
+    ]).then(([movieRes, showtimeRes]) => {
+      setMovie(movieRes.data);
+      setShowtimes(showtimeRes.data);
+      setLoading(false);
+    });
+  }, [movieId]);
 
-  if (isLoading || !movie) {
-    return <p className="text-center text-gray-400 mt-10">Loading movie...</p>;
+  if (loading) {
+    return (
+      <p className="p-6 text-gray-400">
+        Loading…
+      </p>
+    );
   }
 
-  const poster =
-    movie.posterUrl && movie.posterUrl.trim() !== ""
-      ? movie.posterUrl
-      : "/placeholder-movie.png";
-
   return (
-    <div className="flex flex-col md:flex-row gap-8 px-6">
-      <Image
-        src={poster}
-        alt={movie.title}
-        width={240}
-        height={360}
-        className="rounded-md object-cover"
-      />
+    <div className="p-6 max-w-5xl mx-auto space-y-6">
+      <div className="flex gap-8">
+        {/* Poster */}
+        <img
+          src={movie.posterUrl}
+          alt={movie.title}
+          className="w-64 rounded"
+        />
 
-      <div>
-        <h1 className="text-4xl font-bold mb-3">{movie.title}</h1>
-        <p className="text-gray-300 mb-6">{movie.description}</p>
+        {/* Details */}
+        <div className="flex flex-col gap-4 max-w-xl">
+          <h1 className="text-4xl font-bold">
+            {movie.title}
+          </h1>
 
-        <h2 className="text-xl mb-3">Available Showtimes</h2>
+          {movie.tagline && (
+            <p className="italic text-gray-400">
+              {movie.tagline}
+            </p>
+          )}
 
-        {showtimesError ? (
-          <p className="text-gray-400">
-            Please{" "}
-            <Link href="/login" className="underline text-orange-400">
-              login
-            </Link>{" "}
-            to view showtimes.
+          <p className="text-gray-300">
+            {movie.overview || movie.description}
           </p>
-        ) : (
-          <ul className="space-y-2">
-            {showtimes?.map((s: any) => (
-              <li key={s.id}>
-                <Link
-                  href={`/booking/${s.id}`}
-                  className="underline text-orange-400"
+
+          {/* Meta row */}
+          <div className="flex flex-wrap gap-4 text-sm mt-2">
+            <span className="px-3 py-1 rounded bg-zinc-800">
+              ⏱ {movie.runtime || movie.duration} mins
+            </span>
+
+            <span className="px-3 py-1 rounded bg-zinc-800">
+              ⭐ {movie.vote_average?.toFixed(1) ?? '—'}
+            </span>
+
+            <span className="px-3 py-1 rounded bg-zinc-800">
+              {movie.adult ? 'R' : 'PG-13'}
+            </span>
+
+            <span className="px-3 py-1 rounded bg-zinc-800">
+              {movie.original_language?.toUpperCase()}
+            </span>
+
+            <span className="px-3 py-1 rounded bg-zinc-800">
+              {new Date(movie.release_date).getFullYear()}
+            </span>
+
+            {/* NEW */}
+            <span className="px-3 py-1 rounded bg-zinc-800">
+              👥 {movie.vote_count?.toLocaleString() ?? '—'} votes
+            </span>
+          </div>
+
+          {/* Genres */}
+          {movie.genres?.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-2">
+              {movie.genres.map((g: any) => (
+                <span
+                  key={g.id}
+                  className="px-3 py-1 text-xs rounded-full bg-orange-500/10 text-orange-400"
                 >
-                  {new Date(s.start_time).toLocaleString()} — $
-                  {s.price_regular.toFixed(2)}
-                </Link>
-              </li>
-            ))}
-          </ul>
+                  {g.name}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Extra info (collapsible later) */}
+          <div className="text-sm text-gray-400 mt-4 space-y-1">
+            <p>Status: {movie.status}</p>
+            <p>
+              Language:{' '}
+              {movie.spoken_languages?.map((l: any) => l.english_name).join(', ')}
+            </p>
+          </div>
+
+          {/* External links */}
+          <div className="flex gap-4 mt-2 text-sm">
+            {movie.homepage && (
+              <a
+                href={movie.homepage}
+                target="_blank"
+                className="text-orange-400 hover:underline"
+              >
+                Official Site
+              </a>
+            )}
+
+            {movie.imdb_id && (
+              <a
+                href={`https://www.imdb.com/title/${movie.imdb_id}`}
+                target="_blank"
+                className="text-orange-400 hover:underline"
+              >
+                IMDb
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">
+          Available Showtimes
+        </h2>
+
+        {showtimes.length === 0 && (
+          <p className="text-gray-400">
+            No showtimes available.
+          </p>
         )}
+
+        <div className="flex flex-wrap gap-3">
+          {showtimes.map(st => (
+            <button
+              key={st.id}
+              onClick={() =>
+                router.push(`/booking/${st.id}`)
+              }
+              className="px-4 py-2 rounded bg-zinc-800 hover:bg-zinc-700"
+            >
+              {new Date(st.startTime).toLocaleString()}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

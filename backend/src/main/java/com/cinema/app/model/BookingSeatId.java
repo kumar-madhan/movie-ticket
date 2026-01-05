@@ -1,11 +1,16 @@
 package com.cinema.app.model;
 
-import lombok.*;
+import jakarta.persistence.Embeddable;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import java.io.Serializable;
 
-@Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
+@Embeddable
+@Getter
+@Setter
+@EqualsAndHashCode
 public class BookingSeatId implements Serializable {
-    private Long booking;
-    private Long seat;
+    private Long bookingId;
+    private Long seatId;
 }

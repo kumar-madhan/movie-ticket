@@ -1,4 +1,5 @@
 package com.cinema.app.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,6 +20,7 @@ public class Theater {
     private String location;
     private Integer totalSeats;
 
-    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "theater", fetch = FetchType.LAZY)
+    @JsonBackReference
     private List<Screen> screens;
 }
