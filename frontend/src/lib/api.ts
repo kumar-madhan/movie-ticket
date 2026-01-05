@@ -81,10 +81,16 @@ export const getMovieById = async (id: number | string) => {
 };
 
 /* Getting showtimes for a movie */
-export const getShowtimesByMovie = async (movieId: number | string) => {
-  const res = await api.get(`/showtimes/movie/${movieId}`);
-  return res.data;
+export const getShowtimesByMovie = async (movieId: number) => {
+  const res = await axios.get(`/api/showtimes`);
+  return res.data
+    .filter((s: any) => s.movie_id === movieId)
+    .map((s: any) => ({
+      ...s,
+      startTime: s.start_time, // ✅ FIX
+    }));
 };
+
 
 /* Getting showtime by ID */
 export const getShowtimeById = (id: number) =>

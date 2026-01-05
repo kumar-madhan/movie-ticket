@@ -4,6 +4,7 @@ import com.cinema.app.model.User;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
@@ -15,12 +16,14 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    private static final String SECRET_KEY = "c3VwZXItc2VjcmV0LWp3dC1rZXktZm9yLW1vdmllLWFwcA==";
-    private static final long ACCESS_TOKEN_EXPIRATION = 24 * 60 * 60 * 1000; // 1 day
+    @Value("${jwt.secret}")
+    private String secret;
 
-    private Key getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
-        return Keys.hmacShaKeyFor(keyBytes);
+    @Value("${jwt.expiration}")
+    private long expiration;
+
+    private Key key() {
+        return Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
     }
 
     public String extractUsername(String token) {
@@ -28,45 +31,36 @@ public class JwtService {
     }
 
     public <T> T extractClaim(String token, Function<Claims, T> resolver) {
-        final Claims claims = extractAllClaims(token);
-        return resolver.apply(claims);
+        return resolver.apply(parse(token));
     }
 
     public String generateToken(User user) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", user.getId());
-        return buildToken(claims, user.getEmail(), ACCESS_TOKEN_EXPIRATION);
-    }
 
-    private String buildToken(Map<String, Object> claims, String subject, long expiration) {
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(subject)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setSubject(user.getEmail())
+                .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
-                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+                .signWith(key(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    private Claims extractAllClaims(String token) {
+    public boolean isTokenValid(String token, String username) {
+        try {
+            return extractUsername(token).equals(username)
+                    && parse(token).getExpiration().after(new Date());
+        } catch (JwtException e) {
+            return false;
+        }
+    }
+
+    private Claims parse(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(getSignInKey())
+                .setSigningKey(key())
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
-    }
-
-    public boolean isTokenValid(String token, String username) {
-        final String extracted = extractUsername(token);
-        return (extracted.equals(username)) && !isTokenExpired(token);
-    }
-
-    private Key getSignInKey() {
-        return Keys.hmacShaKeyFor(Decoders.BASE64.decode(SECRET_KEY));
-    }
-
-
-    private boolean isTokenExpired(String token) {
-        return extractClaim(token, Claims::getExpiration).before(new Date());
     }
 }

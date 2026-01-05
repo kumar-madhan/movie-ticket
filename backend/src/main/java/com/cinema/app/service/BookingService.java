@@ -35,17 +35,20 @@ public class BookingService {
         booking.setShowtime(showtime);
         booking.setTotalAmount(req.getTotalAmount());
         booking.setBookingTime(LocalDateTime.now());
-        booking = bookingRepository.save(booking);
+        Booking savedBooking = bookingRepository.save(booking);
 
         List<Seat> seats = seatRepository.findAllById(req.getSeatIds());
-        for (Seat seat : seats) {
+        List<BookingSeat> bookingSeats = seats.stream().map(seat -> {
             BookingSeat bs = new BookingSeat();
-            bs.setBooking(booking);
+            bs.setBooking(savedBooking);
             bs.setSeat(seat);
-            bookingSeatRepository.save(bs);
-        }
+            return bs;
+        }).toList();
 
-        return mapToResponse(booking);
+        bookingSeatRepository.saveAll(bookingSeats);
+        savedBooking.setBookingSeats(bookingSeats);
+
+        return mapToResponse(savedBooking);
     }
 
     public List<BookingResponse> getBookingsByUserEmail(String email) {

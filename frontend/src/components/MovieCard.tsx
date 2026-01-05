@@ -7,8 +7,8 @@ import { Movie } from "@/types";
 
 export default function MovieCard({ movie }: { movie: Movie }) {
   const hasPoster =
-    typeof movie.posterUrl === "string" &&
-    movie.posterUrl.trim().length > 0;
+    typeof movie.poster_url === "string" &&
+    movie.poster_url.trim().length > 0;
 
   return (
     <motion.div
@@ -20,8 +20,8 @@ export default function MovieCard({ movie }: { movie: Movie }) {
         <div className="relative aspect-[2/3] w-full">
           {hasPoster ? (
             <Image
-              key={movie.posterUrl} // 🔑 forces re-render when src changes
-              src={movie.posterUrl}
+              key={movie.poster_url} // 🔑 forces re-render when src changes
+              src={movie.poster_url}
               alt={movie.title}
               fill
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 20vw, 15vw"

@@ -4,7 +4,7 @@ export interface Movie {
   description: string;
   duration: number;
   rating: string;
-  posterUrl: string; // ✅ matches backend
+  poster_url: string;
 }
 
 export interface Showtime {

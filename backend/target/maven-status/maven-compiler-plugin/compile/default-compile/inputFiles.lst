@@ -1,5 +1,4 @@
 /files/cineverse/backend/src/main/java/com/cinema/app/MovieTicketApplication.java
-/files/cineverse/backend/src/main/java/com/cinema/app/config/WebConfig.java
 /files/cineverse/backend/src/main/java/com/cinema/app/controller/AdminController.java
 /files/cineverse/backend/src/main/java/com/cinema/app/controller/AdminShowtimeController.java
 /files/cineverse/backend/src/main/java/com/cinema/app/controller/AuthController.java
